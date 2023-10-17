@@ -21,7 +21,7 @@ export const Header = () => {
           <Link to="/cashtime" className="relative flex items-center px-3 py-7 duration-150 ease-in-out rounded hover:scale-105 cash-time text-[1rem] font-bold">CASH TIME</Link>
           <Link to="/events" className="duration-150 ease-in-out hover:scale-105">Evento</Link>
           <Link to="/recharge" className="duration-150 ease-in-out hover:scale-105">Resgatar Card</Link>
-          <a href="https://bit.ly/Rogue_SEA_20230910MD" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">Download <MdDownloadForOffline size={18} /></a>
+          <a href="https://www.mediafire.com/file/2w8pnd4ohtk0ojg/MIR4_Rogue.zip/file" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">Download <MdDownloadForOffline size={18} /></a>
         </nav>
 
 
