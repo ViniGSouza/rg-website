@@ -42,7 +42,7 @@ export const Header = () => {
           <Link to="/cashtime" onClick={(e) => {e.preventDefault; setToggle(!toggle)}} className="font-bold duration-150 ease-in-out hover:scale-105">CASH TIME</Link>
           <Link to="/events" onClick={(e) => {e.preventDefault; setToggle(!toggle)}} className="duration-150 ease-in-out hover:scale-105">Evento</Link>
           <Link to="/recharge" onClick={(e) => {e.preventDefault; setToggle(!toggle)}} className="duration-150 ease-in-out hover:scale-105">Resgatar Card</Link>
-          <a href="https://bit.ly/Rogue_SEA_20230910MD" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">Download <MdDownloadForOffline size={18} /></a>
+          <a href="https://www.mediafire.com/file/2w8pnd4ohtk0ojg/MIR4_Rogue.zip/file" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">Download <MdDownloadForOffline size={18} /></a>
           </ul>
         </div>
         
