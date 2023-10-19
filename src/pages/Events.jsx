@@ -167,7 +167,7 @@ export const EventsPage = () => {
                 setIsLoggedIn(true);
                 setIsDialogOpen(false);
                 getActivities();
-                Swal.fire('Bem-vindo', 'Login realizado com sucesso', 'info');
+                Swal.fire('Bem-vindo', 'Login realizado com sucesso', 'success');
                 setAccount('');
                 setPassword('');
                 setCaptcha('');
@@ -260,7 +260,7 @@ export const EventsPage = () => {
                     type="text"
                     id="username"
                     name="username"
-                    maxLength="10"
+                    maxLength="14"
                     required
                     minLength="6"
                     value={account}

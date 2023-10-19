@@ -40,10 +40,6 @@ export default function ResgateCard() {
     }
   };
 
-  useEffect(() => {
-    gerarImagemCaptcha();
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -94,6 +90,7 @@ export default function ResgateCard() {
           setCardNumber('');
           setCardPassword('');
           setCode('');
+          setMensagemError('');
           gerarImagemCaptcha();
           break;
       }
@@ -101,7 +98,11 @@ export default function ResgateCard() {
       console.error('Erro na requisição:', error);
     }  
   }
-  
+
+  useEffect(() => {
+    gerarImagemCaptcha();
+  }, []);
+
 
   return (
     <main className="relative w-full h-[100vh] bg-fixed bg-center bg-no-repeat bg-cover">
