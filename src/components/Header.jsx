@@ -5,23 +5,39 @@ import menu from "../assets/menu.svg";
 import logo from "../assets/logo.png";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useLanguageStore from '../store/languageStore';
 
 export const Header = () => {
   const [toggle, setToggle] = useState(false);
+  const { isPortuguese } = useLanguageStore();
 
   return (
       <header className="z-10 flex flex-col items-center justify-between w-full px-20 py-4 bg-black md:py-0 md:bg-zinc-800 md:flex-row">
-        <Link to="/"> {/* Use o Link para criar links de navegação */}
+        <Link to="/">
           <img src={logo} alt="logo" width={130} />
         </Link>
         <nav className="hidden md:flex items-center font-semibold text-white text-[0.9rem] md:gap-x-[2rem] xl:gap-x-[2.5rem] 2xl:gap-x-16">
-          <Link to="/" className="duration-150 ease-in-out hover:scale-105">Início</Link>
-          <Link to="/register" className="duration-150 ease-in-out hover:scale-105">Registro</Link>
-          <Link to="/password" className="duration-150 ease-in-out hover:scale-105">Recuperar senha</Link>
-          <Link to="/cashtime" className="relative flex items-center px-3 py-7 duration-150 ease-in-out rounded hover:scale-105 cash-time text-[1rem] font-bold">CASH TIME</Link>
-          <Link to="/events" className="duration-150 ease-in-out hover:scale-105">Evento</Link>
-          <Link to="/recharge" className="duration-150 ease-in-out hover:scale-105">Resgatar Card</Link>
-          <a href="https://www.mediafire.com/file/2w8pnd4ohtk0ojg/MIR4_Rogue.zip/file" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">Download <MdDownloadForOffline size={18} /></a>
+          <Link to="/" className="duration-150 ease-in-out hover:scale-105">
+            {isPortuguese ? 'Início' : 'Home'}
+          </Link>
+          <Link to="/register" className="duration-150 ease-in-out hover:scale-105">
+            {isPortuguese ? 'Registro' : 'Register'}
+          </Link>
+          <Link to="/password" className="duration-150 ease-in-out hover:scale-105">
+            {isPortuguese ? 'Recuperar senha' : 'Forgot Password'}
+          </Link>
+          <Link to="/cashtime" className="relative flex items-center px-3 py-7 duration-150 ease-in-out rounded hover:scale-105 cash-time text-[1rem] font-bold">
+            CASH TIME
+          </Link>
+          <Link to="/events" className="duration-150 ease-in-out hover:scale-105">
+            {isPortuguese ? 'Evento' : 'Event'}
+          </Link>
+          <Link to="/recharge" className="duration-150 ease-in-out hover:scale-105">
+          {isPortuguese ? 'Resgatar Card' : 'Recharge Card'}
+          </Link>
+          <a href="https://www.mediafire.com/file/2w8pnd4ohtk0ojg/MIR4_Rogue.zip/file" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">
+            Download <MdDownloadForOffline size={18} />
+          </a>
         </nav>
 
 

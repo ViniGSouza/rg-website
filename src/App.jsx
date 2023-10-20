@@ -1,20 +1,21 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Footer } from "./components/Footer"
-import { Header } from "./components/Header"
-import { Home } from "./pages/Home"
-import { CashTime } from "./pages/CashTime"
-import Register from "./pages/Registro"
-import Recuperar from "./pages/Recuperar"
-import ResgateCard from "./pages/ResgateCard"
-import { EventsPage } from "./pages/Events"
-import { Error } from "./pages/Error"
-import { Post } from "./pages/Post"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { Home } from "./pages/Home";
+import { CashTime } from "./pages/CashTime";
+import Register from "./pages/Registro";
+import Recuperar from "./pages/Recuperar";
+import ResgateCard from "./pages/ResgateCard";
+import { EventsPage } from "./pages/Events";
+import { Error } from "./pages/Error";
+import { Post } from "./pages/Post";
+import LanguageDetector from "./components/LanguageDetector";
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
+        <LanguageDetector />
         <Header />
           <Routes>
             <Route path="/" element={<Home />} />

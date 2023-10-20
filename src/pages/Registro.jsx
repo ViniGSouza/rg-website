@@ -3,29 +3,8 @@ import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { z } from 'zod';
 import Swal from 'sweetalert2';
+import useLanguageStore from "../store/languageStore";
 
-const schemaAccount = z
-  .string()
-  .min(6, { message: "O campo deve ter pelo menos 6 caracteres" })
-  .max(10, { message: "O campo deve ter no máximo 10 caracteres" })
-  .regex(/^[a-z0-9]+$/, {
-    message: "O campo deve conter apenas letras minúsculas e números",
-  });
-
-  const schemaPassword = z
-  .string()
-  .min(6, { message: "O campo deve ter pelo menos 6 caracteres" })
-  .max(14, { message: "O campo deve ter no máximo 14 caracteres" })
-  // eslint-disable-next-line no-useless-escape
-  .regex(/^[a-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/, {
-    message: "O campo deve conter apenas letras minúsculas, números e caracteres especiais",
-  });
-
-  const schemaAnswer = z
-  .string()
-  .regex(/^[a-z0-9]+$/, {
-    message: "O campo deve conter apenas letras minúsculas e números",
-  });
 
 export default function Register() {
   const [account, setAccount] = useState('');
@@ -44,6 +23,39 @@ export default function Register() {
   const [emptyQuestionMessage, setEmptyQuestionMessage] = useState(false);
   const [alreadyExistMessage, setAlreadyExistMessage] = useState(false);
   const d = 97;
+
+  const { isPortuguese } = useLanguageStore();
+
+  const schemaAccount = z
+    .string()
+    .min(6, { 
+      message: isPortuguese ? "O campo deve ter pelo menos 6 caracteres" : "The field must have at least 6 characters" 
+    })
+    .max(10, { 
+      message: isPortuguese ? "O campo deve ter no máximo 10 caracteres" : "The field must have at most 10 characters" 
+    })
+    .regex(/^[a-z0-9]+$/, {
+      message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
+    });
+  
+
+    const schemaPassword = z
+    .string()
+    .min(6, { 
+      message: isPortuguese ? "O campo deve ter pelo menos 6 caracteres" : "The field must have at least 6 characters" 
+    })
+    .max(14, { 
+      message: isPortuguese ? "O campo deve ter no máximo 14 caracteres" : "The field must have at most 14 characters" 
+    })
+    .regex(/^[a-z0-9!@#$%^&*()_+{}[\]:;<>,.?~\\/-]+$/, {
+      message: isPortuguese ? "O campo deve conter apenas letras minúsculas, números e caracteres especiais" : "The field must contain only lowercase letters, numbers, and special characters",
+    });
+  
+  const schemaAnswer = z
+    .string()
+    .regex(/^[a-z0-9]+$/, {
+      message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
+    });
 
   const siteKey = '6LeoLUwoAAAAAB1xzVibwz_YHZP2qWAB3cst-Ov5';
 
@@ -69,10 +81,10 @@ export default function Register() {
     const inputValue = e.target.value;
     const validation = schemaAccount.safeParse(inputValue);
 
-    setAccount(inputValue); // Atualiza o estado do campo independentemente da validação
+    setAccount(inputValue);
 
     if (validation.success) {
-      setAccountErrorMessages([]); // Limpa as mensagens de erro se a validação for bem-sucedida
+      setAccountErrorMessages([]);
     } else {
       setAccountErrorMessages(validation.error.issues.map((issue) => issue.message));
     }
@@ -95,10 +107,10 @@ export default function Register() {
     const inputValue = e.target.value;
     const validation = schemaAnswer.safeParse(inputValue);
 
-    setAnswer(inputValue); // Atualiza o estado do campo independentemente da validação
+    setAnswer(inputValue);
 
     if (validation.success) {
-      setAnswerErrorMessages([]); // Limpa as mensagens de erro se a validação for bem-sucedida
+      setAnswerErrorMessages([]);
     } else {
       setAnswerErrorMessages(validation.error.issues.map((issue) => issue.message));
     }
@@ -109,7 +121,9 @@ export default function Register() {
     setConfirmPassword(inputValue);
 
     if (inputValue !== password) {
-      setConfirmPasswordErrorMessage("A confirmação de senha deve ser igual à senha");
+      setConfirmPasswordErrorMessage(
+        isPortuguese ? "A confirmação de senha deve ser igual à senha" : "The confirm password must be equal to the password"
+      );
     } else {
       setConfirmPasswordErrorMessage(null);
     }
@@ -118,7 +132,6 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Validação das entradas
     const accountValidation = schemaAccount.safeParse(account);
     const passwordValidation = schemaPassword.safeParse(password);
     const answerValidation = schemaAnswer.safeParse(answer);
@@ -150,7 +163,6 @@ export default function Register() {
           }
         );
   
-        console.log('Resposta do servidor:', response);
         if (response.data === accountAlreadyExists) {
           setAlreadyExistMessage(true);
           return;

@@ -1,16 +1,27 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { BsAndroid2, BsWindows } from "react-icons/bs"
-import { FiDownload } from "react-icons/fi"
-import { FaAppStoreIos } from "react-icons/fa"
+import { BsAndroid2, BsWindows } from "react-icons/bs";
+import { FiDownload } from "react-icons/fi";
+import { FaAppStoreIos } from "react-icons/fa";
+import useLanguageStore from "../store/languageStore";
 
 export const Resume = () => {
+ const { isPortuguese } = useLanguageStore();
+
   return (
     <section className="px-6 py-16 bg-gray-200 border-t-2 border-b-2 border-gray-400 md:px-60">
       <div className="flex flex-col items-start grid-cols-2 gap-y-10 md:grid gap-x-20">
         <div className="flex flex-col gap-y-3">
           <div className="flex items-center gap-x-4">
             <FiDownload size={24} className="text-gray-500"/>
-            <h2 className="text-2xl">Baixe agora e venha se divertir<b> no MIR4 Rogue</b></h2>
+            {isPortuguese ? (
+              <h2 className="text-2xl">
+                Baixe agora e venha se divertir no <b>MIR4 Rogue</b>
+              </h2>
+            ) : (
+              <h2 className="text-2xl">
+                Download now and have fun with <b>MIR4 Rogue</b>
+              </h2>
+            )}
           </div>
 
           <div className="flex flex-col items-start text-center text-white gap-y-6">
@@ -24,9 +35,15 @@ export const Resume = () => {
         </div>
 
         <div>
-          <h3 className="pb-3 my-5 text-2xl font-bold border-b-2 border-gray-300">
-          SERVIDOR CONSTANTEMENTE<b className="text-red-600"> ATUALIZADO</b>
-          </h3>
+          {isPortuguese ? (
+            <h3 className="pb-3 my-5 text-2xl font-bold border-b-2 border-gray-300">
+            SERVIDOR CONSTANTEMENTE<b className="text-red-600"> ATUALIZADO</b>
+            </h3>
+            ) : (
+            <h3 className="pb-3 my-5 text-2xl font-bold border-b-2 border-gray-300">
+            CONSTANTLY UPDATED<b className="text-red-600"> SERVER</b>
+            </h3>
+          )}
           <iframe className="w-full h-[250px]" src="https://www.youtube.com/embed/9vaEtO3HKTE?si=da0Sx_k0RRBlpoKE" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         </div>
 
