@@ -3,9 +3,11 @@ import Swal from 'sweetalert2';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import useCookieStore from '../store/cookieStore';
+import useLanguageStore from '../store/languageStore';
 
 export const EventsPage = () => {
   const { generateCookie } = useCookieStore();
+  const { isPortuguese } = useLanguageStore();
 
   const API_SERVER = 'https://api.rogueintl.com';
   const [imageSrc, setImageSrc] = useState(null);
@@ -19,12 +21,6 @@ export const EventsPage = () => {
   const [captcha, setCaptcha] = useState('');
 
   const session = Cookies.get('s');
-
-  useEffect(() => {
-    generateCookie();
-    gerarImagemCaptcha();
-    getActivities();
-  }, []);
 
   const gerarImagemCaptcha = async () => {
     if (session) {
@@ -49,7 +45,7 @@ export const EventsPage = () => {
           setImageSrc(dataUri);
         }
       } catch (error) {
-        console.error('Erro na requisição:', error);
+        console.error('Error:', error);
       }
     }
   };
@@ -59,7 +55,6 @@ export const EventsPage = () => {
   };
 
   const receiveReward = (giftID = '') => {
-    console.log("Função ativada");
     fetch(`${API_SERVER}/api/v1/rint/activity/receive`, {
       method: 'POST',
       mode: 'cors',
@@ -76,11 +71,13 @@ export const EventsPage = () => {
         if (data.success) {
           getActivities();
         } else {
-          Swal.fire('Oops', 'Requer login', 'info');
+          isPortuguese ?
+          Swal.fire('Oops', 'Requer login', 'info') : Swal.fire('Oops', 'Requires Login', 'info');
         }
       })
       .catch((err) => {
-        Swal.fire('Erro', 'Algo de errado aconteceu', err);
+        isPortuguese ?
+        Swal.fire('Error', 'Algo de errado aconteceu', err) : Swal.fire('Error', 'Something went wrong', err);
       });
   };
 
@@ -107,10 +104,10 @@ export const EventsPage = () => {
           } else {
             setIsLoggedIn(true);
           }
-  
+        
           const tableData = data.data
-            .replaceAll('未登录', 'Requer login')
-            .replaceAll('need login', 'Requer login');
+            .replaceAll('未登录', isPortuguese ? 'Requer login' : 'Requires Login')
+            .replaceAll('need login', isPortuguese ? 'Requer login' : 'Requires Login');
           setActivityTableData(tableData);
           setPageCount(data.count);
   
@@ -133,14 +130,16 @@ export const EventsPage = () => {
                   document.execCommand('Copy');
                   oInput.className = 'oInput';
                   oInput.style.display = 'none';
-                  Swal.fire('Sucesso', 'Seu código foi copiado!', 'success');
+                  isPortuguese ?
+                  Swal.fire('Sucesso', 'Seu código foi copiado!', 'success') : Swal.fire('Success', 'Your code has been copied!', 'success');
                 }
               });
             });
           }, 2000)
         })
         .catch((err) => {
-          Swal.fire('Erro', 'Algo de errado aconteceu', err);
+          isPortuguese ?
+          Swal.fire('Erro', 'Algo de errado aconteceu', err) : Swal.fire('Error', 'Something went wrong', err);
         });
     }
   };
@@ -167,41 +166,48 @@ export const EventsPage = () => {
                 setIsLoggedIn(true);
                 setIsDialogOpen(false);
                 getActivities();
-                Swal.fire('Bem-vindo', 'Login realizado com sucesso', 'success');
+                isPortuguese ?
+                Swal.fire('Bem-vindo', 'Login realizado com sucesso', 'success') : Swal.fire('Welcome', 'Login successful', 'success');
                 setAccount('');
                 setPassword('');
                 setCaptcha('');
                 break;
               }
               case 'the account not exist': {
-                Swal.fire('Erro', 'Algo de errado aconteceu, revise seus dados', 'info');
+                isPortuguese ?
+                Swal.fire('Erro', 'Login não encontrado', 'info') : Swal.fire('Error', 'Login not found', 'info');
                 gerarImagemCaptcha();
                 break;
               }
               case 'the password cannot be empty': {
-                Swal.fire('Erro', 'Sua senha não pode ser vazia', 'info');
+                isPortuguese ? 
+                Swal.fire('Erro', 'Sua senha não pode ser vazia', 'info') : Swal.fire('Error', 'Your password cannot be empty', 'info');
                 gerarImagemCaptcha();
                 break;
               }
               case 'account cannot be empty': {
-                Swal.fire('Erro', 'Sua login não pode ser vazio', 'info');
+                isPortuguese ?
+                Swal.fire('Erro', 'Seu login não pode ser vazio', 'info') : Swal.fire('Error', 'Your login cannot be empty', 'info');
                 gerarImagemCaptcha();
                 break;
               }
               case 'the verification code is incorrectly entered': {
-                Swal.fire('Erro', 'Código de segurança incorreto', 'info');
+                isPortuguese ?
+                Swal.fire('Erro', 'Código de segurança incorreto', 'info') : Swal.fire('Error', 'Incorrect verification code', 'info');
                 gerarImagemCaptcha();
                 break;
               }
               case 'the verification code cannot be empty': {
-                Swal.fire('Erro', 'Código de segurança não pode ser vazio', 'info');
+                isPortuguese ?
+                Swal.fire('Erro', 'Código de segurança não pode ser vazio', 'info') : Swal.fire('Error', 'Verification code cannot be empty', 'info');
                 gerarImagemCaptcha();
                 break;
               }
             }
         })
         .catch((err) => {
-          Swal.fire('Erro', 'Algo de errado aconteceu', err);
+          isPortuguese ?
+          Swal.fire('Erro', 'Algo de errado aconteceu', err) : Swal.fire('Error', 'Something went wrong', err);
         });
     }
   };
@@ -225,11 +231,13 @@ export const EventsPage = () => {
         } else {
           setIsLoggedIn(true);
         }
-
-        Swal.fire('Até logo', 'Você foi deslogado', 'info');
+        
+        isPortuguese ?
+        Swal.fire('Até logo', 'Você foi deslogado', 'info') : Swal.fire('Until next time', 'You have been logged out', 'info');
       })
       .catch((err) => {
-        Swal.fire('Erro', 'Algo de errado aconteceu', err);
+        isPortuguese ?
+        Swal.fire('Erro', 'Algo de errado aconteceu', err) : Swal.fire('Error', 'Something went wrong', err);
       });
   };
 
@@ -240,6 +248,12 @@ export const EventsPage = () => {
       setIsDialogOpen(true);
     }
   };
+
+  useEffect(() => {
+    generateCookie();
+    gerarImagemCaptcha();
+    getActivities();
+  }, []);
 
   return (
     <main className="w-full min-h-screen py-10 bg-center bg-no-repeat bg-cover bg-zinc-800 sm:bg-fixed">
@@ -266,13 +280,15 @@ export const EventsPage = () => {
                     value={account}
                     onChange={(e) => setAccount(e.target.value)}
                     className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
-                    placeholder="Digite seu login"
+                    placeholder={isPortuguese ? "Digite seu login" : "Enter your login"}
                   />
                 </div>
               </div>
 
               <div className='mt-3'>
-                <label htmlFor="password" className="text-sm font-medium text-black">Senha</label>
+                <label htmlFor="password" className="text-sm font-medium text-black">
+                  {isPortuguese ? "Senha" : "Password"}
+                </label>
                 <div className="relative mt-1">
                   <input
                     type="password"
@@ -280,7 +296,7 @@ export const EventsPage = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
-                    placeholder="Digite sua senha"
+                    placeholder={isPortuguese ? "Digite sua senha" : "Enter your password"}
                   />
                 </div>
               </div>
@@ -294,7 +310,9 @@ export const EventsPage = () => {
                     style={{ border: '2px solid black' }}
                   />
                 </div>
-                <label htmlFor="captcha" className="text-sm font-medium text-black">Código de segurança:</label>
+                <label htmlFor="captcha" className="text-sm font-medium text-black">
+                  {isPortuguese ? "Código de seguranca" : "Verification code"}
+                </label>
 
                 <div className="relative mt-1">
                   <input
@@ -304,7 +322,7 @@ export const EventsPage = () => {
                     value={captcha}
                     onChange={(e) => setCaptcha(e.target.value)}
                     className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
-                    placeholder="Digite o código de segurança"
+                    placeholder={isPortuguese ? "Digite seu código de segurança" : "Enter your verification code"}
                   />
                 </div>
               </div>
@@ -323,7 +341,7 @@ export const EventsPage = () => {
               onClick={() => setIsDialogOpen(false)}
               className="block w-1/2 py-2 mt-12 text-sm font-medium text-white bg-gray-600 rounded shadow md:px-12 hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
             >
-              Fechar
+              {isPortuguese ? 'Fechar' : 'Close'}
             </button>
           </div>
         </div>
@@ -336,12 +354,15 @@ export const EventsPage = () => {
             className={`btn bg-red-600 m-3 p-4 rounded`}
             onClick={accountControl}
           >
-            {isLoggedIn ? `${account} Logout` : 'Faça o login para resgatar suas recompensas'}
+            {!isLoggedIn && (isPortuguese ? 'Faça login para resgatar suas recompensas' : 'Login to retrieve your rewards')}
+            {isLoggedIn && (isPortuguese ? 'Sair' : 'Logout')}
           </button>
 
           <div className="grid mt-5">
             <div className="flex grid-cols-12 gap-2 py-5 md:grid">
-              <b className="mx-3 md:mx-0">Página: </b>
+              <b className="mx-3 md:mx-0">
+                {isPortuguese ? 'Página: ' : 'Page: '}
+              </b>
               {Array.from({ length: pageCount + 1 }, (_, i) => (
                 <button
                   key={i}
@@ -356,7 +377,9 @@ export const EventsPage = () => {
             </div>
             <table id="event" dangerouslySetInnerHTML={{ __html: activityTableData }}></table>
             <div className="flex grid-cols-12 gap-2 py-5 md:grid">
-            <b className="mx-3 md:mx-0">Página: </b>
+            <b className="mx-3 md:mx-0">
+                {isPortuguese ? 'Página: ' : 'Page: '}
+            </b>
               {Array.from({ length: pageCount + 1 }, (_, i) => (
                 <button
                   key={i}
