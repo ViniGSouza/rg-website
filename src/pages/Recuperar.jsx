@@ -3,29 +3,7 @@ import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { z } from 'zod';
 import Swal from "sweetalert2";
-
-const schemaAccount = z
-  .string()
-  .min(6, { message: "O campo deve ter pelo menos 6 caracteres" })
-  .max(10, { message: "O campo deve ter no máximo 10 caracteres" })
-  .regex(/^[a-z0-9]+$/, {
-    message: "O campo deve conter apenas letras minúsculas e números",
-  });
-
-  const schemaPassword = z
-  .string()
-  .min(6, { message: "O campo deve ter pelo menos 6 caracteres" })
-  .max(14, { message: "O campo deve ter no máximo 14 caracteres" })
-  // eslint-disable-next-line no-useless-escape
-  .regex(/^[a-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]+$/, {
-    message: "O campo deve conter apenas letras minúsculas, números e caracteres especiais",
-  });
-
-  const schemaAnswer = z
-  .string()
-  .regex(/^[a-z]+$/, {
-    message: "O campo deve conter apenas letras minúsculas",
-  });
+import useLanguageStore from "../store/languageStore";
 
 export default function Recuperar() {
   const [account, setAccount] = useState('');
@@ -42,6 +20,39 @@ export default function Recuperar() {
   const [incorrectDataMessage, setIncorrectDataMessage] = useState(false);
   const [validationCodeMessage, setValidationCodeMessage] = useState(false);
   const [emptyCodeMessage, setEmptyCodeMessage] = useState(false);
+
+  const { isPortuguese } = useLanguageStore();
+
+  const schemaAccount = z
+    .string()
+    .min(6, { 
+      message: isPortuguese ? "O campo deve ter pelo menos 6 caracteres" : "The field must have at least 6 characters" 
+    })
+    .max(10, { 
+      message: isPortuguese ? "O campo deve ter no máximo 10 caracteres" : "The field must have at most 10 characters" 
+    })
+    .regex(/^[a-z0-9]+$/, {
+      message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
+    });
+  
+
+    const schemaPassword = z
+    .string()
+    .min(6, { 
+      message: isPortuguese ? "O campo deve ter pelo menos 6 caracteres" : "The field must have at least 6 characters" 
+    })
+    .max(14, { 
+      message: isPortuguese ? "O campo deve ter no máximo 14 caracteres" : "The field must have at most 14 characters" 
+    })
+    .regex(/^[a-z0-9!@#$%^&*()_+{}[\]:;<>,.?~\\/-]+$/, {
+      message: isPortuguese ? "O campo deve conter apenas letras minúsculas, números e caracteres especiais" : "The field must contain only lowercase letters, numbers, and special characters",
+    });
+  
+  const schemaAnswer = z
+    .string()
+    .regex(/^[a-z0-9]+$/, {
+      message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
+    });
 
   const siteKey = '6LeoLUwoAAAAAB1xzVibwz_YHZP2qWAB3cst-Ov5';
 
@@ -64,10 +75,10 @@ export default function Recuperar() {
     const inputValue = e.target.value;
     const validation = schemaAccount.safeParse(inputValue);
 
-    setAccount(inputValue); // Atualiza o estado do campo independentemente da validação
+    setAccount(inputValue);
 
     if (validation.success) {
-      setAccountErrorMessages([]); // Limpa as mensagens de erro se a validação for bem-sucedida
+      setAccountErrorMessages([]);
     } else {
       setAccountErrorMessages(validation.error.issues.map((issue) => issue.message));
     }
@@ -90,10 +101,10 @@ export default function Recuperar() {
     const inputValue = e.target.value;
     const validation = schemaAnswer.safeParse(inputValue);
 
-    setAnswer(inputValue); // Atualiza o estado do campo independentemente da validação
+    setAnswer(inputValue);
 
     if (validation.success) {
-      setAnswerErrorMessages([]); // Limpa as mensagens de erro se a validação for bem-sucedida
+      setAnswerErrorMessages([]);
     } else {
       setAnswerErrorMessages(validation.error.issues.map((issue) => issue.message));
     }
@@ -104,7 +115,9 @@ export default function Recuperar() {
     setConfirmPassword(inputValue);
 
     if (inputValue !== password) {
-      setConfirmPasswordErrorMessage("A confirmação de senha deve ser igual à senha");
+      setConfirmPasswordErrorMessage(isPortuguese ?
+        "A confirmação de senha deve ser igual à senha" : "The confirm password must be equal to the password"
+        );
     } else {
       setConfirmPasswordErrorMessage(null);
     }
@@ -113,7 +126,6 @@ export default function Recuperar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Validação das entradas
     const accountValidation = schemaAccount.safeParse(account);
     const passwordValidation = schemaPassword.safeParse(password);
     const answerValidation = schemaAnswer.safeParse(answer);
@@ -143,8 +155,7 @@ export default function Recuperar() {
             },
           }
         );
-  
-        console.log('Resposta do servidor:', response);
+        
         if (response.data === incorrectData) {
           setIncorrectDataMessage(true);
           return;
@@ -157,13 +168,13 @@ export default function Recuperar() {
           setEmptyCodeMessage(true);
           return;
         }
-        Swal.fire('Sucesso', 'Sua senha foi alterada!', 'success');
+        isPortuguese ? Swal.fire('Sucesso', 'Sua senha foi alterada!', 'success') : Swal.fire('Success', 'Your password was changed!', 'success');
         setAccount('');
         setPassword('');
         setConfirmPassword('');
         setAnswer('');
       } catch (error) {
-        console.error('Erro na requisição:', error);
+        console.error('Error:', error);
         setError(true);
       }
     }
@@ -174,7 +185,9 @@ export default function Recuperar() {
     <main className="relative w-full h-[120vh] bg-fixed bg-center bg-no-repeat bg-cover">
       <div className="absolute inset-0 bg-black opacity-80"></div>
       <form className="absolute -translate-x-1/2 -translate-y-1/2 rounded p top-1/2 left-1/2 md:w-[30rem]" onSubmit={handleSubmit}>
-        <h1 className="mb-6 text-4xl font-bold text-white">Recupere sua senha:</h1>
+        <h1 className="mb-6 text-4xl font-bold text-white">
+          {isPortuguese ? 'Recupere sua senha:' : 'Reset your password:'}
+        </h1>
         <div className="flex flex-col mb-4 gap-y-3">
           <label htmlFor="account" className="text-lg font-bold text-white">
             Login:
@@ -183,7 +196,7 @@ export default function Recuperar() {
             type="text"
             className="p-2 rounded"
             name="account"
-            placeholder="6-10 letras ou números"
+            placeholder={isPortuguese ? "6-10 letras ou números" : "6-10 letters or numbers"}
             value={account}
             onChange={handleAccountChange}
           />
@@ -197,12 +210,14 @@ export default function Recuperar() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="account" className="text-lg font-bold text-white">Digite sua nova senha:</label>
+          <label htmlFor="account" className="text-lg font-bold text-white">
+            {isPortuguese ? 'Digite sua nova senha:' : 'Enter your new password:'}
+          </label>
           <input
             type="password"
             className="p-2 rounded"
             value={password}
-            placeholder="6-14 letras, números, caracteres especiais"
+            placeholder={isPortuguese ? "6-14 letras, números, caracteres especiais" : "6-14 letters, numbers, special characters"}
             onChange={handlePasswordChange}
           />
           {passwordErrorMessages.length > 0 && (
@@ -215,11 +230,13 @@ export default function Recuperar() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="account" className="text-lg font-bold text-white">Confirmação de nova senha:</label>
+          <label htmlFor="account" className="text-lg font-bold text-white">
+            {isPortuguese ? 'Confirme sua nova senha:' : 'Confirm your new password:'}
+          </label>
           <input
             type="password"
             className="p-2 rounded"
-            placeholder="Digite sua senha novamente"
+            placeholder={isPortuguese ? "Digite sua senha novamente" : "Enter your password again"}
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
           />
@@ -231,23 +248,37 @@ export default function Recuperar() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="account" className="text-lg font-bold text-white">Pergunta secreta:</label>
+          <label htmlFor="account" className="text-lg font-bold text-white">
+            {isPortuguese ? 'Pergunta secreta:' : 'Secret question:'}
+          </label>
           <select className="p-2 rounded" onChange={handleSelecaoChange} name="question">
-            <option>Selecione a pergunta</option>
-            <option value="父亲姓名">Nome do pai</option>
-            <option value="母亲姓名">Nome da Mãe</option>
-            <option value="最爱的人名称">Nome da pessoa favorita</option>
-            <option value="第一款网络游戏">Seu primeiro jogo online</option>
+            <option value="父亲姓名">
+              {isPortuguese ? 'Selecione a pergunta' : 'Select the question'}
+            </option>
+            <option value="父亲姓名">
+              {isPortuguese ? 'Nome do pai' : "Father's name"}
+            </option>
+            <option value="母亲姓名">
+              {isPortuguese ? 'Nome da Mãe' : "Mother's name"}
+            </option>
+            <option value="最爱的人名称">
+              {isPortuguese ? 'Nome da pessoa favorita' : "Favorite person's name"}
+            </option>
+            <option value="第一款网络游戏">
+              {isPortuguese ? 'Seu primeiro jogo online' : "Your first online game"}
+            </option>
           </select>
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="account" className="text-lg font-bold text-white">Resposta secreta:</label>
+          <label htmlFor="account" className="text-lg font-bold text-white">
+            {isPortuguese ? 'Resposta secreta:' : 'Secret answer:'}
+          </label>
           <input
             type="text"
             className="p-2 rounded"
             value={answer}
-            placeholder="Digite a sua resposta"
+            placeholder={isPortuguese ? "Digite a sua resposta" : "Enter your answer"}
             onChange={handleAnswerChange}
           />
           {answerErrorMessages.length > 0 && (
@@ -265,20 +296,20 @@ export default function Recuperar() {
             onChange={handleRecaptchaChange}
           />
         </div>
-        <button className="px-10 py-3 mt-4 font-bold text-white duration-150 ease-in-out bg-red-600 rounded hover:scale-95"> 
-          Recuperar senha
+        <button className="px-10 py-3 mt-4 font-bold text-white duration-150 ease-in-out bg-red-600 rounded hover:scale-95">
+          {isPortuguese ? 'Recuperar senha' : 'Reset password'}
         </button>
         <p className={`${error ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          Ocorreu um erro, revise seus dados e tente novamente.
+        {isPortuguese ? 'Ocorreu um erro, revise seus dados e tente novamente.' : 'An error occurred, please review your data and try again.'}
         </p>
         <p className={`${incorrectDataMessage ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          Usuário ou resposta secreta incorreta, tente novamente.
+          {isPortuguese ? 'Usuário ou resposta secreta incorreta, tente novamente.' : 'User or secret answer incorrect, try again.'}
         </p>
         <p className={`${validationCodeMessage ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          Código Inválido, atualize a página e tente novamente.
+          {isPortuguese ? 'CAPTCHA inválido, atualize a pagina e tente novamente.' : 'CAPTCHA invalid, update the page and try again.'}
         </p>
         <p className={`${emptyCodeMessage ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          Código Inválido, atualize a página e tente novamente.
+          {isPortuguese ? 'CAPTCHA inválido, atualize a pagina e tente novamente.' : 'CAPTCHA invalid, update the page and try again.'}
         </p>
       </form>
     </main>
