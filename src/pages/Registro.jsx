@@ -179,14 +179,14 @@ export default function Register() {
           setEmptyQuestionMessage(true);
           return;
         }
-        Swal.fire('Sucesso', 'Sua conta foi criada!', 'success');
+        isPortuguese ? Swal.fire('Sucesso', 'Sua conta foi criada!', 'success') : Swal.fire('Success', 'Your account was created!', 'success');
         setAccount('');
         setPassword('');
         setConfirmPassword('');
         setAnswer('');
         setCode('');
       } catch (error) {
-        console.error('Erro na requisição:', error);
+        console.error('Error', error);
         setError(true);
       }
     } 
@@ -201,7 +201,9 @@ export default function Register() {
     <main className="relative w-full h-[120vh] bg-fixed bg-center bg-no-repeat bg-cover">
       <div className="absolute inset-0 bg-black opacity-80"></div>
       <form className="absolute -translate-x-1/2 -translate-y-1/2 rounded p top-1/2 left-1/2 md:w-[30rem]" onSubmit={handleSubmit}>
-        <h1 className="mb-6 text-4xl font-bold text-white">Registre-se já!</h1>
+        <h1 className="mb-6 text-4xl font-bold text-white">
+          {isPortuguese ? 'Registre-se já!' : 'Register now!'}
+        </h1>
         <div className="flex flex-col mb-4 gap-y-3">
           <label htmlFor="account" className="text-lg font-bold text-white">
             Login:
@@ -210,7 +212,7 @@ export default function Register() {
             type="text"
             className="p-2 rounded"
             name="account"
-            placeholder="6-10 letras ou números"
+            placeholder={isPortuguese ? "6-10 letras ou números" : "6-10 letters or numbers"}
             value={account}
             onChange={handleAccountChange}
           />
@@ -224,12 +226,14 @@ export default function Register() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="password" className="text-lg font-bold text-white">Senha:</label>
+          <label htmlFor="password" className="text-lg font-bold text-white">
+            {isPortuguese ? 'Senha:' : 'Password:'}
+          </label>
           <input
             type="password"
             className="p-2 rounded"
             value={password}
-            placeholder="6-14 letras, números, caracteres especiais"
+            placeholder={isPortuguese ? "6-14 letras, números, caracteres especiais" : "6-14 letters, numbers, special characters"}
             onChange={handlePasswordChange}
             name="password"
           />
@@ -243,11 +247,13 @@ export default function Register() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="password2" className="text-lg font-bold text-white">Confirmação de senha:</label>
+          <label htmlFor="password2" className="text-lg font-bold text-white">
+            {isPortuguese ? 'Confirmação de senha:' : 'Confirm password:'}
+          </label>
           <input
             type="password"
             className="p-2 rounded"
-            placeholder="Digite sua senha novamente"
+            placeholder={isPortuguese ? 'Digite sua senha novamente' : 'Enter your password again'}
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
             name="password2"
@@ -260,23 +266,37 @@ export default function Register() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="question" className="text-lg font-bold text-white">Pergunta secreta:</label>
+          <label htmlFor="question" className="text-lg font-bold text-white">
+            {isPortuguese ? 'Pergunta secreta:' : 'Secret question:'}
+          </label>
           <select className="p-2 rounded" onChange={handleSelecaoChange} name="question">
-            <option value="父亲姓名">Selecione a pergunta</option>
-            <option value="父亲姓名">Nome do pai</option>
-            <option value="母亲姓名">Nome da Mãe</option>
-            <option value="最爱的人名称">Nome da pessoa favorita</option>
-            <option value="第一款网络游戏">Seu primeiro jogo online</option>
+            <option value="父亲姓名">
+              {isPortuguese ? 'Selecione a pergunta' : 'Select the question'}
+            </option>
+            <option value="父亲姓名">
+              {isPortuguese ? 'Nome do pai' : "Father's name"}
+            </option>
+            <option value="母亲姓名">
+              {isPortuguese ? 'Nome da Mãe' : "Mother's name"}
+            </option>
+            <option value="最爱的人名称">
+              {isPortuguese ? 'Nome da pessoa favorita' : "Favorite person's name"}
+            </option>
+            <option value="第一款网络游戏">
+              {isPortuguese ? 'Seu primeiro jogo online' : "Your first online game"}
+            </option>
           </select>
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="answer" className="text-lg font-bold text-white">Resposta secreta:</label>
+          <label htmlFor="answer" className="text-lg font-bold text-white"> 
+            {isPortuguese ? 'Resposta secreta:' : 'Secret answer:'}
+          </label>
           <input
             type="text"
             className="p-2 rounded"
             value={answer}
-            placeholder="Digite a sua resposta"
+            placeholder={isPortuguese ? "Digite a sua resposta" : "Enter your answer"}
             onChange={handleAnswerChange}
             required
             name="answer"
@@ -297,22 +317,22 @@ export default function Register() {
           />
         </div>
         <button className="px-10 py-3 mt-4 font-bold text-white duration-150 ease-in-out bg-red-600 rounded hover:scale-95"> 
-          Registrar
+          {isPortuguese ? 'Registrar' : 'Register'}
         </button>
         <p className={`${error ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          Ocorreu um erro, revise seus dados e tente novamente.
+          {isPortuguese ? 'Ocorreu um erro, revise seus dados e tente novamente.' : 'An error occurred, please review your data and try again.'}
         </p>
         <p className={`${alreadyExistMessage ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          Já existe um usuário com esse login, tente novamente.
+          {isPortuguese ? 'Esse login já existe, tente novamente.' : 'This login already exists, try again.'}
         </p>
         <p className={`${validationCodeMessage ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          Código Inválido, atualize a página e tente novamente.
+          {isPortuguese ? 'Captcha inválido, atualize a página e tente novamente.' : 'Captcha invalid, update the page and try again.'}
         </p>
         <p className={`${emptyCodeMessage ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          O Captcha não pode ficar vazio,resolva o CAPTCHA e tente novamente.
+          {isPortuguese ? 'O CAPTCHA não pode ficar vazio, resolva o captcha e tente novamente.' : 'The verification code cannot be empty, update the page and try again.'}
         </p>
         <p className={`${emptyQuestionMessage ? 'block' : 'hidden'} mt-5 text-xl font-bold text-red-700 drop-shadow-lg`}>
-          A pergunta secreta não pode ficar vazia, selecione uma pergunta.
+          {isPortuguese ? 'A pergunta secreta não pode ficar vazia, selecione uma pergunta e digite a sua resposta.' : 'The secret question cannot be empty, select a question and enter your answer.'}
         </p>
       </form>
     </main>
