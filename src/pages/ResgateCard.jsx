@@ -63,6 +63,9 @@ export default function ResgateCard() {
         }
       );
       switch(response.data) {
+        case "\r\n\r\nAccount does not exist":
+          setMensagemError(isPortuguese ? 'Conta não existe.' : 'Account does not exist.');
+          break;
         case "\r\n\r\ncard has used":
           setMensagemError(isPortuguese ? 'Cartão já foi utilizado.' : 'The card has been used.');
           break;
