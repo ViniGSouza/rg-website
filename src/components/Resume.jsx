@@ -3,9 +3,15 @@ import { BsAndroid2, BsWindows } from "react-icons/bs";
 import { FiDownload } from "react-icons/fi";
 import { FaAppStoreIos } from "react-icons/fa";
 import useLanguageStore from "../store/languageStore";
+import { useState } from "react";
 
 export const Resume = () => {
+  const [isOpen, setIsOpen] = useState(false);
  const { isPortuguese } = useLanguageStore();
+
+ const toggleDropdown = () => {
+  setIsOpen(!isOpen);
+};
 
   return (
     <section className="px-6 py-16 bg-gray-200 border-t-2 border-b-2 border-gray-400 md:px-60">
@@ -25,7 +31,35 @@ export const Resume = () => {
           </div>
 
           <div className="flex flex-col items-start text-center text-white gap-y-6">
-            <a href="https://www.mediafire.com/file/2w8pnd4ohtk0ojg/MIR4_Rogue.zip/file" target="_blank" className="flex items-center px-16 py-3 mt-5 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800"><BsWindows size={30} /> DOWNLOAD WINDOWS</a>
+          <div className="relative z-50 group">
+            <button
+              onClick={toggleDropdown}
+              className="flex items-center px-16 py-3 mt-5 text-2xl font-bold text-white duration-150 ease-in-out bg-red-600 rounded focus:outline-none gap-x-6 hover:bg-red-800"
+            >
+              <BsWindows size={30} /> DOWNLOAD WINDOWS
+            </button>
+            {isOpen && (
+              <div className="absolute w-48 mt-2 bg-white rounded-lg shadow-lg right-[42%]">
+                <ul className="w-[300px] py-2 font-bold bg-red-800 rounded drop-shadow-md">
+                  <li>
+                    <a href="https://mega.nz/file/s8BjgY4Y#YyQNzqtH59MG3qMqDHvMJVgxkRQilzptAIJsu2qKk2A" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
+                      MEGA
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.mediafire.com/file/y6s01vt373fgdh9/Rogue_SEA.zip/file" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
+                      MEDIAFIRE
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://drive.google.com/file/d/1uo0DCnhshaINSdLFp7Lqblph_9pY8-q4/view?usp=drive_link" target='_blank' rel="noreferrer" className="block px-4 py-2 text-white hover:bg-red-500">
+                      GOOGLE DRIVE
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
 
             <a href="https://www.mediafire.com/file/rmrer5z418w2ul3/RogueMIR_SEA_20231015.apk/file" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800"><BsAndroid2 size={30} />DOWNLOAD ANDROID</a>
 

@@ -1,4 +1,4 @@
-import { BsYoutube, BsDiscord } from 'react-icons/bs';
+import { BsYoutube, BsDiscord, BsArrowDownCircle } from 'react-icons/bs';
 import { MdDownloadForOffline } from 'react-icons/md';
 import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
@@ -8,8 +8,13 @@ import { Link } from 'react-router-dom';
 import useLanguageStore from '../store/languageStore';
 
 export const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const { isPortuguese } = useLanguageStore();
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
       <header className="z-10 flex flex-col items-center justify-between w-full px-20 py-4 bg-black md:py-0 md:bg-zinc-800 md:flex-row">
@@ -35,9 +40,35 @@ export const Header = () => {
           <Link to="/recharge" className="duration-150 ease-in-out hover:scale-105">
           {isPortuguese ? 'Resgatar Card' : 'Recharge Card'}
           </Link>
-          <a href="https://www.mediafire.com/file/2w8pnd4ohtk0ojg/MIR4_Rogue.zip/file" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">
-            Download <MdDownloadForOffline size={18} />
-          </a>
+          <div className="relative z-50 group">
+            <button
+              onClick={toggleDropdown}
+              className="text-white focus:outline-none "
+            >
+              Download <BsArrowDownCircle className='inline-block ml-2' size={16} />
+            </button>
+            {isOpen && (
+              <div className="absolute w-48 mt-2 bg-white rounded-lg shadow-lg -left-1/2">
+                <ul className="py-2">
+                  <li>
+                    <a href="https://mega.nz/file/s8BjgY4Y#YyQNzqtH59MG3qMqDHvMJVgxkRQilzptAIJsu2qKk2A" className="block px-4 py-2 text-gray-800 hover:bg-gray-200" target='_blank' rel="noreferrer">
+                      MEGA
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.mediafire.com/file/y6s01vt373fgdh9/Rogue_SEA.zip/file" className="block px-4 py-2 text-gray-800 hover:bg-gray-200" target='_blank' rel="noreferrer">
+                      MEDIAFIRE
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://drive.google.com/file/d/1uo0DCnhshaINSdLFp7Lqblph_9pY8-q4/view?usp=drive_link" target='_blank' rel="noreferrer" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                      GOOGLE DRIVE
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </nav>
 
 
