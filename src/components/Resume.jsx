@@ -42,17 +42,17 @@ export const Resume = () => {
               <div className="absolute w-48 mt-2 bg-white rounded-lg shadow-lg right-[42%]">
                 <ul className="w-[300px] py-2 font-bold bg-red-800 rounded drop-shadow-md">
                   <li>
-                    <a href="https://mega.nz/file/p5ZgRSKa#z3ANCQ5k_JGUeAeKquQf37Rx3w-97OCpgXuzVX-hIwc" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
+                    <a href="https://mega.nz/file/ktAHlahB#XWpwpx7ZWSUyE42y7qU-FZWRBXqWm3h4LnT6u5w99yU" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
                       MEGA
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.mediafire.com/file/phqunft2w7venq2/MIR4_ROGUE.rar/file" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
+                    <a href="https://www.mediafire.com/file/rx3xjm6ez9vcedl/MIR4_Rogue_Market.zip/file" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
                       MEDIAFIRE
                     </a>
                   </li>
                   <li>
-                    <a href="https://drive.google.com/file/d/16ZPkf4Nfk4V-fOEMHOHBicrv4e-XOGBn/view?usp=sharing" target='_blank' rel="noreferrer" className="block px-4 py-2 text-white hover:bg-red-500">
+                    <a href="https://drive.google.com/file/d/1NIoGIjPoOue4Iq1BJcwY2xzlBGJu123v/view?usp=sharing" target='_blank' rel="noreferrer" className="block px-4 py-2 text-white hover:bg-red-500">
                       GOOGLE DRIVE
                     </a>
                   </li>
@@ -63,7 +63,7 @@ export const Resume = () => {
 
             <a href="https://www.mediafire.com/file/rmrer5z418w2ul3/RogueMIR_SEA_20231015.apk/file" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800"><BsAndroid2 size={30} />DOWNLOAD ANDROID</a>
 
-            <a href="https://ff.nnnzh.com/XSC4" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800">
+            <a href="http://tinsy.me/NXsb4r" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800">
               <FaAppStoreIos size={30} />DOWNLOAD IOS</a>
           </div>
         </div>

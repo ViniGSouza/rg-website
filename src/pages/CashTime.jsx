@@ -41,7 +41,7 @@ export const CashTime = () => {
 
               <div className="items-center mt-4 md:flex gap-x-3">
                 <p className="flex items-center text-lg gap-x-3"><IoLogoDiscord size={32} className="text-blue-400" /> {isPortuguese ? 'Adicionar no discord:' : 'Add to discord:'}</p>
-                <p className="flex justify-end text-lg md:block"> hexslayer#2752</p>
+                <p className="flex justify-end text-lg md:block"> hexslayer</p>
               </div>
             </div>
           </div>
