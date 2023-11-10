@@ -42,17 +42,17 @@ export const Resume = () => {
               <div className="absolute w-48 mt-2 bg-white rounded-lg shadow-lg right-[42%]">
                 <ul className="w-[300px] py-2 font-bold bg-red-800 rounded drop-shadow-md">
                   <li>
-                    <a href="https://mega.nz/file/ktAHlahB#XWpwpx7ZWSUyE42y7qU-FZWRBXqWm3h4LnT6u5w99yU" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
+                    <a href="https://mega.nz/file/o5Rh0RIB#Al8KXJKywstYF3BY5ODjKyB7kEE1PdRrASRmK5JA6oY" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
                       MEGA
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.mediafire.com/file/rx3xjm6ez9vcedl/MIR4_Rogue_Market.zip/file" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
+                    <a href="https://www.mediafire.com/file/957foljwfw0ojpt/Rogue_Market.zip/file" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
                       MEDIAFIRE
                     </a>
                   </li>
                   <li>
-                    <a href="https://drive.google.com/file/d/1NIoGIjPoOue4Iq1BJcwY2xzlBGJu123v/view?usp=sharing" target='_blank' rel="noreferrer" className="block px-4 py-2 text-white hover:bg-red-500">
+                    <a href="https://drive.google.com/file/d/1NZBmCPqZA4ZDoAIzzTWUmy_CE6ZroZ-s/view?usp=sharing" target='_blank' rel="noreferrer" className="block px-4 py-2 text-white hover:bg-red-500">
                       GOOGLE DRIVE
                     </a>
                   </li>
