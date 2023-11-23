@@ -28,8 +28,8 @@ export default function Recuperar() {
     .min(6, { 
       message: isPortuguese ? "O campo deve ter pelo menos 6 caracteres" : "The field must have at least 6 characters" 
     })
-    .max(10, { 
-      message: isPortuguese ? "O campo deve ter no máximo 10 caracteres" : "The field must have at most 10 characters" 
+    .max(30, { 
+      message: isPortuguese ? "O campo deve ter no máximo 30 caracteres" : "The field must have at most 30 characters" 
     })
     .regex(/^[a-z0-9]+$/, {
       message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
@@ -196,7 +196,7 @@ export default function Recuperar() {
             type="text"
             className="p-2 rounded"
             name="account"
-            placeholder={isPortuguese ? "6-10 letras ou números" : "6-10 letters or numbers"}
+            placeholder={isPortuguese ? "6-30 letras ou números" : "6-30 letters or numbers"}
             value={account}
             onChange={handleAccountChange}
           />
