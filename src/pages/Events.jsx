@@ -274,7 +274,7 @@ export const EventsPage = () => {
                     type="text"
                     id="username"
                     name="username"
-                    maxLength="14"
+                    maxLength="30"
                     required
                     minLength="6"
                     value={account}
