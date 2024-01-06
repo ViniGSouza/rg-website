@@ -210,13 +210,14 @@ export default function Recuperar() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="account" className="text-lg font-bold text-white">
+          <label htmlFor="password" className="text-lg font-bold text-white">
             {isPortuguese ? 'Digite sua nova senha:' : 'Enter your new password:'}
           </label>
           <input
             type="password"
             className="p-2 rounded"
             value={password}
+            name="password"
             placeholder={isPortuguese ? "6-14 letras, números, caracteres especiais" : "6-14 letters, numbers, special characters"}
             onChange={handlePasswordChange}
           />
@@ -230,11 +231,12 @@ export default function Recuperar() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="account" className="text-lg font-bold text-white">
+          <label htmlFor="confirmPassword" className="text-lg font-bold text-white">
             {isPortuguese ? 'Confirme sua nova senha:' : 'Confirm your new password:'}
           </label>
           <input
             type="password"
+            name="confirmPassword"
             className="p-2 rounded"
             placeholder={isPortuguese ? "Digite sua senha novamente" : "Enter your password again"}
             value={confirmPassword}
@@ -248,7 +250,7 @@ export default function Recuperar() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="account" className="text-lg font-bold text-white">
+          <label htmlFor="question" className="text-lg font-bold text-white">
             {isPortuguese ? 'Pergunta secreta:' : 'Secret question:'}
           </label>
           <select className="p-2 rounded" onChange={handleSelecaoChange} name="question">
@@ -271,11 +273,12 @@ export default function Recuperar() {
         </div>
 
         <div className="flex flex-col mb-4 gap-y-3">
-          <label htmlFor="account" className="text-lg font-bold text-white">
+          <label htmlFor="answer" className="text-lg font-bold text-white">
             {isPortuguese ? 'Resposta secreta:' : 'Secret answer:'}
           </label>
           <input
             type="text"
+            name="answer"
             className="p-2 rounded"
             value={answer}
             placeholder={isPortuguese ? "Digite a sua resposta" : "Enter your answer"}
