@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { z } from 'zod';
@@ -22,6 +22,7 @@ export default function Register() {
   const [emptyCodeMessage, setEmptyCodeMessage] = useState(false);
   const [emptyQuestionMessage, setEmptyQuestionMessage] = useState(false);
   const [alreadyExistMessage, setAlreadyExistMessage] = useState(false);
+  const recaptchaRef = useRef(null);
   const d = 97;
 
   const { isPortuguese } = useLanguageStore();
@@ -185,9 +186,11 @@ export default function Register() {
         setConfirmPassword('');
         setAnswer('');
         setCode('');
+        recaptchaRef.current.reset();
       } catch (error) {
         console.error('Error', error);
         setError(true);
+        recaptchaRef.current.reset();
       }
     } 
   };
@@ -314,6 +317,7 @@ export default function Register() {
           <ReCAPTCHA
             sitekey={siteKey}
             onChange={handleRecaptchaChange}
+            ref={recaptchaRef}
           />
         </div>
         <button className="px-10 py-3 mt-4 font-bold text-white duration-150 ease-in-out bg-red-600 rounded hover:scale-95"> 

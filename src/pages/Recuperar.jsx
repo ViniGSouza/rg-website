@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { z } from 'zod';
@@ -20,6 +20,7 @@ export default function Recuperar() {
   const [incorrectDataMessage, setIncorrectDataMessage] = useState(false);
   const [validationCodeMessage, setValidationCodeMessage] = useState(false);
   const [emptyCodeMessage, setEmptyCodeMessage] = useState(false);
+  const recaptchaRef = useRef(null);
 
   const { isPortuguese } = useLanguageStore();
 
@@ -173,9 +174,12 @@ export default function Recuperar() {
         setPassword('');
         setConfirmPassword('');
         setAnswer('');
+        setCode('');
+        recaptchaRef.current.reset();
       } catch (error) {
         console.error('Error:', error);
         setError(true);
+        recaptchaRef.current.reset();
       }
     }
   };
