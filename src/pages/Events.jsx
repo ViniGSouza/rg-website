@@ -41,8 +41,8 @@ export const EventsPage = () => {
   
         if (response.status === 200) {
           const data = response.data;
-          const dataUri = data.dataUri;
-          setImageSrc(dataUri);
+          const imgData = data.image;
+          setImageSrc(`data:image/png;base64,${imgData}`);
         }
       } catch (error) {
         console.error('Error:', error);
