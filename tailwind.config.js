@@ -15,12 +15,18 @@ export default {
       },
       animation: {
         enter: 'enter 1.5s forwards',
+        evententer: 'evententer 1.5s forwards',
       },
       keyframes: {
         enter: {
           to: {
             opacity: 1,
             transform: 'initial'
+          }
+        },
+        evententer: {
+          to: {
+            opacity: 1,
           }
         },
       }
