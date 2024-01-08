@@ -138,7 +138,7 @@ export default function ResgateCard() {
 
 
   return (
-    <main className="relative w-full h-[100vh] bg-fixed bg-center bg-no-repeat bg-cover">
+    <main className="relative w-full h-[100vh] bg-fixed bg-center bg-no-repeat bg-cover translate-y-8 opacity-0 animate-enter">
       <div className="absolute inset-0 bg-black opacity-80"></div>
       <form className="absolute -translate-x-1/2 -translate-y-1/2 rounded p top-1/2 left-1/2 md:w-[30rem]" onSubmit={handleSubmit} >
         <h1 className="mb-6 text-4xl font-bold text-white">

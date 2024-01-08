@@ -256,7 +256,7 @@ export const EventsPage = () => {
   }, []);
 
   return (
-    <main className="w-full min-h-screen py-10 bg-center bg-no-repeat bg-cover bg-zinc-800 sm:bg-fixed">
+    <main className="w-full min-h-screen py-10 translate-y-8 bg-center bg-no-repeat bg-cover opacity-0 bg-zinc-800 sm:bg-fixed animate-enter">
 
       <div className={`${isDialogOpen ? 'block' : 'hidden'}`}>
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />

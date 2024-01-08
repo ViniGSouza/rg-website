@@ -13,7 +13,7 @@ export const CashTime = () => {
   const { isPortuguese } = useLanguageStore();
 
   return (
-    <main className="z-10 bg-zinc-800 ">
+    <main className="z-10 translate-y-8 opacity-0 bg-zinc-800 animate-enter">
       <div className="p-20 bg-center bg-no-repeat bg-cover bg-cashtime">
         <h1 className="text-5xl font-black text-center text-white drop-shadow-lg">Cash Time</h1>
         <p className="mt-2 text-center text-white drop-shadow-lg">
