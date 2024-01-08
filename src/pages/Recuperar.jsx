@@ -299,6 +299,7 @@ export default function Recuperar() {
 
         <div className="flex flex-col mb-4 gap-y-3">
           <ReCAPTCHA
+            ref={recaptchaRef}
             sitekey={siteKey}
             onChange={handleRecaptchaChange}
           />
