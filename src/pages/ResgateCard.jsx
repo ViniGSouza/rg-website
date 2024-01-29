@@ -9,7 +9,7 @@ export default function ResgateCard() {
   const [cardNumber, setCardNumber] = useState('');
   const [cardPassword, setCardPassword] = useState('');
   const [code, setCode] = useState('');
-  const [imagemSrc, setImagemSrc] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
   const [mensagemError, setMensagemError] = useState(null);
 
   const { isPortuguese } = useLanguageStore();
@@ -42,6 +42,34 @@ export default function ResgateCard() {
   //   }
   // };
 
+  // const gerarImagemCaptcha = async () => {
+  //   if (session) {
+  //     try {
+  //       const data = {
+  //         session
+  //       };
+  
+  //       const response = await axios.post(
+  //         'https://api.mir4-rogue.com/captcha',
+  //         data,
+  //         {
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           },
+  //         }
+  //       );
+  
+  //       if (response.status === 200) {
+  //         const data = response.data;
+  //         const imgData = data.image;
+  //         setImagemSrc(`data:image/png;base64,${imgData}`);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   }
+  // };
+
   const gerarImagemCaptcha = async () => {
     if (session) {
       try {
@@ -62,7 +90,7 @@ export default function ResgateCard() {
         if (response.status === 200) {
           const data = response.data;
           const imgData = data.image;
-          setImagemSrc(`data:image/png;base64,${imgData}`);
+          setImageSrc(`data:image/png;base64,${imgData}`);
         }
       } catch (error) {
         console.error('Error:', error);
@@ -138,7 +166,7 @@ export default function ResgateCard() {
 
 
   return (
-    <main className="relative w-full h-[100vh] bg-fixed bg-center bg-no-repeat bg-cover translate-y-8 opacity-0 animate-enter">
+    <main className="relative w-full h-[100vh] bg-fixed bg-center bg-no-repeat bg-cover">
       <div className="absolute inset-0 bg-black opacity-80"></div>
       <form className="absolute -translate-x-1/2 -translate-y-1/2 rounded p top-1/2 left-1/2 md:w-[30rem]" onSubmit={handleSubmit} >
         <h1 className="mb-6 text-4xl font-bold text-white">
@@ -200,8 +228,8 @@ export default function ResgateCard() {
             onChange={(e) => setCode(e.target.value)}
           />
           
-          { imagemSrc && 
-            <img src={imagemSrc} alt="Imagem Captcha" onClick={gerarImagemCaptcha} className="h-full col-span-2 cursor-pointer" 
+          { imageSrc && 
+            <img src={imageSrc} alt="Imagem Captcha" onClick={gerarImagemCaptcha} className="h-full col-span-2 cursor-pointer" 
           />}
 
           </div>
