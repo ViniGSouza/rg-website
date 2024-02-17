@@ -229,7 +229,7 @@ export default function ResgateCard() {
           />
           
           { imageSrc && 
-            <img src={imageSrc} alt="Imagem Captcha" onClick={gerarImagemCaptcha} className="h-full col-span-2 cursor-pointer" 
+            <img src={imageSrc} alt="Imagem Captcha" onClick={gerarCaptcha} className="h-full col-span-2 cursor-pointer" 
           />}
 
           </div>
