@@ -70,7 +70,7 @@ export default function ResgateCard() {
   //   }
   // };
 
-  const gerarImagemCaptcha = async () => {
+  const gerarCaptcha = async () => {
     if (session) {
       try {
         const data = {
@@ -160,8 +160,8 @@ export default function ResgateCard() {
     }  
   }
 
-  useEffect( async () => {
-    await gerarImagemCaptcha();
+  useEffect(() => {
+    gerarCaptcha();
   }, []);
 
 

@@ -36,7 +36,6 @@ export default function Recuperar() {
       message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
     });
   
-
     const schemaPassword = z
     .string()
     .min(6, { 
@@ -49,11 +48,14 @@ export default function Recuperar() {
       message: isPortuguese ? "O campo deve conter apenas letras minúsculas, números e caracteres especiais" : "The field must contain only lowercase letters, numbers, and special characters",
     });
   
+  // const schemaAnswer = z
+  //   .string()
+  //   .regex(/^[a-z0-9]+$/, {
+  //     message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
+  //   });
+
   const schemaAnswer = z
-    .string()
-    .regex(/^[a-z0-9]+$/, {
-      message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
-    });
+  .string();
 
   const siteKey = '6LeoLUwoAAAAAB1xzVibwz_YHZP2qWAB3cst-Ov5';
 
