@@ -160,8 +160,8 @@ export default function ResgateCard() {
     }  
   }
 
-  useEffect(() => {
-    gerarImagemCaptcha();
+  useEffect( async () => {
+    await gerarImagemCaptcha();
   }, []);
 
 
