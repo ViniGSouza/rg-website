@@ -32,9 +32,9 @@ export default function Recuperar() {
     .max(30, { 
       message: isPortuguese ? "O campo deve ter no máximo 30 caracteres" : "The field must have at most 30 characters" 
     })
-    .regex(/^[a-z0-9]+$/, {
-      message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
-    });
+    // .regex(/^[a-z0-9]+$/, {
+    //   message: isPortuguese ? "O campo deve conter apenas letras minúsculas e números" : "The field must contain only lowercase letters and numbers",
+    // });
   
     const schemaPassword = z
     .string()
