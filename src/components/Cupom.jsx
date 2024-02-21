@@ -11,7 +11,7 @@ export const Cupom = ({ cupomImg, cupomAmount, cupomValue }) => {
           </div>
           <div className='absolute rotate-y-180 w-full h-full bg-[#0F1823] bg-opacity-95 rounded-3xl overflow-hidden text-neutral-300 backface-hidden flex items-center justify-center px-3'>
             <div className="text-center">
-              <p className="text-xl font-bold">{isPortuguese ? 'Cupom de' : 'Coupon of'} {cupomAmount}</p>
+              <p className="text-xl font-bold">{isPortuguese ? 'Cash de' : 'CASH'} {cupomAmount}</p>
               <p className="mt-2">{isPortuguese ? 'Valor' : 'Value'} {cupomValue}</p>
             </div>
           </div>
