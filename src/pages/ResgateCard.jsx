@@ -16,60 +16,6 @@ export default function ResgateCard() {
 
   const session = Cookies.get('s');
  
-  // const gerarImagemCaptcha = async () => {
-  //   try {
-  //     const data = {
-  //       session
-  //     };
-
-  //     const response = await axios.post(
-  //       'https://api.mir4-rogue.com/captcha',
-  //       data,
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       }
-  //     );
-
-  //     if (response.status === 200) {
-  //       const data = response.data;
-  //       const dataUri = data.dataUri;
-  //       setImagemSrc(dataUri);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // };
-
-  // const gerarImagemCaptcha = async () => {
-  //   if (session) {
-  //     try {
-  //       const data = {
-  //         session
-  //       };
-  
-  //       const response = await axios.post(
-  //         'https://api.mir4-rogue.com/captcha',
-  //         data,
-  //         {
-  //           headers: {
-  //             'Content-Type': 'application/json',
-  //           },
-  //         }
-  //       );
-  
-  //       if (response.status === 200) {
-  //         const data = response.data;
-  //         const imgData = data.image;
-  //         setImagemSrc(`data:image/png;base64,${imgData}`);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error:', error);
-  //     }
-  //   }
-  // };
-
   const gerarCaptcha = async () => {
     if (session) {
       try {
@@ -152,7 +98,7 @@ export default function ResgateCard() {
           setCardPassword('');
           setCode('');
           setMensagemError('');
-          gerarImagemCaptcha();
+          gerarCaptcha();
           break;
       }
     } catch (error) {
