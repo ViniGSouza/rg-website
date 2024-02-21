@@ -27,43 +27,47 @@ export const CashTime = () => {
         </h2>
 
         <div className="flex flex-col grid-cols-2 gap-10 my-10 md:grid">
-          <div className="bg-[#2b2d31] shadow-xl p-6 rounded-sm flex flex-col md:flex-row gap-x-10 items-center">
-            <img src={warrior} alt="Icon Discord" width={120} className="rounded-full" />
-            <div className="flex flex-col items-center text-white gap-x-3">
-              <div className="text-lg font-bold md:flex gap-x-3">
-                <h3 className="text-2xl">
-                  {isPortuguese ? 'Nome do vendedor:' : "Seller's name:"}
-                </h3>
-              <p className="text-2xl font-medium">
-                Ashura
-              </p>
-              </div>
+          <a href="https://discord.gg/D5utwgkXSP" target="_blank" rel="noopener noreferrer" className="duration-300 ease-in-out hover:scale-105">
+            <div className="bg-[#2b2d31] shadow-xl p-6 rounded-sm flex flex-col md:flex-row gap-x-10 items-center">
+              <img src={warrior} alt="Icon Discord" width={120} className="rounded-full" />
+              <div className="flex flex-col items-center text-white gap-x-3">
+                <div className="text-lg font-bold md:flex gap-x-3">
+                  <h3 className="text-2xl">
+                    {isPortuguese ? 'Nome do vendedor:' : "Seller's name:"}
+                  </h3>
+                <p className="text-2xl font-medium">
+                  Ashura
+                </p>
+                </div>
 
-              <div className="items-center mt-4 md:flex gap-x-3">
-                <p className="flex items-center text-lg gap-x-3"><IoLogoDiscord size={32} className="text-blue-400" /> {isPortuguese ? 'Adicionar no discord:' : 'Add to discord:'}</p>
-                <p className="flex justify-end text-lg md:block"> hexslayer</p>
+                <div className="items-center mt-4 md:flex gap-x-3">
+                  <p className="flex items-center text-lg gap-x-3"><IoLogoDiscord size={32} className="text-blue-400" /> {isPortuguese ? 'Adicionar no discord:' : 'Add to discord:'}</p>
+                  <p className="flex justify-end text-lg md:block"> hexslayer</p>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
+          
+          <a href="https://discord.gg/D5utwgkXSP" target="_blank" rel="noopener noreferrer" className="duration-300 ease-in-out hover:scale-105">
+            <div className="bg-[#2b2d31] shadow-xl p-6 rounded-sm flex flex-col md:flex-row gap-x-10 items-center">
+              <img src={arbalist} alt="Icon Discord" width={120} className="rounded-full" />
+              <div className="flex flex-col items-center text-white gap-x-3">
+                <div className="text-lg font-bold md:flex gap-x-3">
+                  <h3 className="text-2xl">
+                    {isPortuguese ? 'Nome do vendedor:' : "Seller's name:"}
+                  </h3>
+                <p className="text-2xl font-medium">
+                  Gordo
+                </p>
+                </div>
 
-          <div className="bg-[#2b2d31] shadow-xl p-6 rounded-sm flex flex-col md:flex-row gap-x-10 items-center">
-            <img src={arbalist} alt="Icon Discord" width={120} className="rounded-full" />
-            <div className="flex flex-col items-center text-white gap-x-3">
-              <div className="text-lg font-bold md:flex gap-x-3">
-                <h3 className="text-2xl">
-                  {isPortuguese ? 'Nome do vendedor:' : "Seller's name:"}
-                </h3>
-              <p className="text-2xl font-medium">
-                Gordo
-              </p>
-              </div>
-
-              <div className="items-center mt-4 md:flex gap-x-3">
-                <p className="flex items-center text-lg gap-x-3"><IoLogoDiscord size={32} className="text-blue-400" /> {isPortuguese ? 'Adicionar no discord:' : 'Add to discord:'}</p>
-                <p className="flex justify-end text-lg md:block"> gordo97</p>
+                <div className="items-center mt-4 md:flex gap-x-3">
+                  <p className="flex items-center text-lg gap-x-3"><IoLogoDiscord size={32} className="text-blue-400" /> {isPortuguese ? 'Adicionar no discord:' : 'Add to discord:'}</p>
+                  <p className="flex justify-end text-lg md:block"> gordo97</p>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
 
 
@@ -76,30 +80,40 @@ export const CashTime = () => {
 
           <p className="mt-3 font-semibold text-center text-green-400">
             {isPortuguese ?
-            'Os valores de cada cupom podem variar, contate o vendedor para mais detalhes.'
+            'Verifique os valores de cada cupom passando o mouse pela imagem.'
               : 
-            'The values of each coupon can vary, contact the seller for more details.'}</p>
+            'Check the values of each coupon by passing the mouse over the image.'}</p>
         </div>
 
         <div className="grid items-center justify-center grid-cols-2 col-span-2 px-6 sm:grid-cols-3 md:grid-cols-5 md:px-60 gap-x-5">
           <Cupom 
             cupomImg={cupom50}
+            cupomAmount={'$50,00'}
+            cupomValue={'R$ 45,00'}
           />
 
           <Cupom 
             cupomImg={cupom100}
+            cupomAmount={'$100,00'}
+            cupomValue={'R$ 80,00'}
           />
 
           <Cupom 
             cupomImg={cupom200}
+            cupomAmount={'$200,00'}
+            cupomValue={'R$ 160,00'}
           />
 
           <Cupom 
             cupomImg={cupom500}
+            cupomAmount={'$500,00'}
+            cupomValue={'R$ 400,00'}
           />
 
           <Cupom 
             cupomImg={cupom1000}
+            cupomAmount={'$1000,00'}
+            cupomValue={'R$ 800,00'}
           />
         </div>
       </section>
