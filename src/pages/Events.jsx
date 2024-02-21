@@ -6,7 +6,6 @@ import useCookieStore from '../store/cookieStore';
 import useLanguageStore from '../store/languageStore';
 
 export const EventsPage = () => {
-  const { generateCookie } = useCookieStore();
   const { isPortuguese } = useLanguageStore();
 
   const API_SERVER = 'https://api.rogueintl.com';
@@ -250,7 +249,6 @@ export const EventsPage = () => {
   };
 
   useEffect(() => {
-    generateCookie();
     gerarImagemCaptcha();
     getActivities();
   }, []);

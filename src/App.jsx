@@ -10,8 +10,17 @@ import { EventsPage } from "./pages/Events";
 import { Error } from "./pages/Error";
 import { Post } from "./pages/Post";
 import LanguageDetector from "./components/LanguageDetector";
+import useCookieStore from "./store/cookieStore";
+import { useEffect } from "react";
+
 
 function App() {
+  const { generateCookie } = useCookieStore();
+
+  useEffect(() => {
+    generateCookie();
+  }, []);
+  
   return (
     <>
       <BrowserRouter>
