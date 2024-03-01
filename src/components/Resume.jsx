@@ -61,9 +61,9 @@ export const Resume = () => {
             )}
           </div>
 
-            <a href="https://www.mediafire.com/file/erwip2cnfb49shg/RogueMIR_SEA_20231110.apk/file" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800"><BsAndroid2 size={30} />DOWNLOAD ANDROID</a>
+            <a href="https://www.mediafire.com/file/307w705ej9zbv5z/RogueMIR_SEA_20240119.apk/file" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800"><BsAndroid2 size={30} />DOWNLOAD ANDROID</a>
 
-            <a href="http://tinsy.me/NXsb4r" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800">
+            <a href="https://ff.youwan520.com/XSC4" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800">
               <FaAppStoreIos size={30} />DOWNLOAD IOS</a>
           </div>
         </div>
