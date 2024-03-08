@@ -24,7 +24,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <LanguageDetector />
         <Header />
           <Routes>
             <Route path="/" element={<Home />} />

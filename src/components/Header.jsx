@@ -1,4 +1,4 @@
-import { BsYoutube, BsDiscord, BsArrowDownCircle } from 'react-icons/bs';
+import { BsDiscord, BsArrowDownCircle } from 'react-icons/bs';
 import { MdDownloadForOffline } from 'react-icons/md';
 import close from "../assets/close.svg";
 import menu from "../assets/menu.svg";
@@ -6,11 +6,13 @@ import logo from "../assets/logo.png";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useLanguageStore from '../store/languageStore';
+import brasilIcon from "../assets/brasil.png";
+import reinoUnidoIcon from "../assets/reino-unido.png";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
-  const { isPortuguese } = useLanguageStore();
+  const { isPortuguese, setIsPortuguese } = useLanguageStore();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -93,10 +95,19 @@ export const Header = () => {
           </ul>
         </div>
         
-        <a href="https://discord.gg/D5utwgkXSP" target='_blank' rel='noreferrer' className="flex items-center text-sm font-medium gap-x-4">
-          <BsYoutube className="duration-150 text-white/75 hover:text-white" fontSize={24} />
+        <a href="https://discord.gg/roguemarket" target='_blank' rel='noreferrer' className="flex items-center text-sm font-medium gap-x-4">
           <BsDiscord className="duration-150 text-white/75 hover:text-white" fontSize={24} />
-        </a>  
+        </a>
+
+        <div className="flex items-center gap-x-2">
+          <button className="drop-shadow-lg" onClick={() => setIsPortuguese(true)}>
+            <img src={brasilIcon} alt="Selecionar Linguagem (PT-BR)" className="w-6 h-6 cursor-pointer"/>
+          </button>
+
+          <button className="drop-shadow-lg" onClick={() => setIsPortuguese(false)}>
+            <img src={reinoUnidoIcon} alt="Selecionar Linguagem (EN-UK/EN-US)" className="w-6 h-6 cursor-pointer"/>
+          </button>
+        </div> 
       </header>
 
       
