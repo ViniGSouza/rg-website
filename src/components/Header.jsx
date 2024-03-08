@@ -99,7 +99,7 @@ export const Header = () => {
           <BsDiscord className="duration-150 text-white/75 hover:text-white" fontSize={24} />
         </a>
 
-        <div className="flex items-center gap-x-2">
+        <div className="flex items-center my-3 gap-x-2">
           <button className="drop-shadow-lg" onClick={() => setIsPortuguese(true)}>
             <img src={brasilIcon} alt="Selecionar Linguagem (PT-BR)" className="w-6 h-6 cursor-pointer"/>
           </button>

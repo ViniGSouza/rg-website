@@ -9,7 +9,6 @@ import ResgateCard from "./pages/ResgateCard";
 import { EventsPage } from "./pages/Events";
 import { Error } from "./pages/Error";
 import { Post } from "./pages/Post";
-import LanguageDetector from "./components/LanguageDetector";
 import useCookieStore from "./store/cookieStore";
 import { useEffect } from "react";
 
