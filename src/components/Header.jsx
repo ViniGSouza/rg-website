@@ -53,17 +53,17 @@ export const Header = () => {
               <div className="absolute w-48 mt-2 bg-white rounded-lg shadow-lg -left-1/2">
                 <ul className="py-2">
                   <li>
-                    <a href="https://mega.nz/file/QhhU0IYI#3eNS5iEtUd8C5n31cOVQtCClQz4ohUb8-kvv4OL02K0" className="block px-4 py-2 text-gray-800 hover:bg-gray-200" target='_blank' rel="noreferrer">
+                    <a href="https://mega.nz/file/lpoEQKoA#utZGdhbiUyFHjMRMu9KxN0fQeDjY8QvHkZYpNN21Ut4" className="block px-4 py-2 text-gray-800 hover:bg-gray-200" target='_blank' rel="noreferrer">
                       MEGA
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.mediafire.com/file/g84zngwodpd9nis/Rogue_SEA_RGM.zip/file" className="block px-4 py-2 text-gray-800 hover:bg-gray-200" target='_blank' rel="noreferrer">
+                    <a href="https://www.mediafire.com/file_premium/u9vky70el1jw85w/Rogue_SEA_20240410.rar/file" className="block px-4 py-2 text-gray-800 hover:bg-gray-200" target='_blank' rel="noreferrer">
                       MEDIAFIRE
                     </a>
                   </li>
                   <li>
-                    <a href="https://drive.google.com/file/d/1gqxdJT8ZcWhtrsjk9XjuiiSFAU5qhHpJ/view?usp=sharing" target='_blank' rel="noreferrer" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    <a href="https://drive.google.com/file/d/1r3z9lqLIXXjCbT7YO3mlXye0XGjgx7Lf/view?usp=sharing" target='_blank' rel="noreferrer" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                       GOOGLE DRIVE
                     </a>
                   </li>
@@ -91,7 +91,7 @@ export const Header = () => {
           <Link to="/cashtime" onClick={(e) => {e.preventDefault; setToggle(!toggle)}} className="font-bold duration-150 ease-in-out hover:scale-105">CASH TIME</Link>
           <Link to="/events" onClick={(e) => {e.preventDefault; setToggle(!toggle)}} className="duration-150 ease-in-out hover:scale-105">Evento</Link>
           <Link to="/recharge" onClick={(e) => {e.preventDefault; setToggle(!toggle)}} className="duration-150 ease-in-out hover:scale-105">Resgatar Card</Link>
-          <a href="https://www.mediafire.com/file/g84zngwodpd9nis/Rogue_SEA_RGM.zip/file" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">Download <MdDownloadForOffline size={18} /></a>
+          <a href="https://drive.google.com/file/d/1lt-Hft_DpMmJI1cMyJ-lH786rrmYNRTB/view?usp=sharing" target='_blank' rel='noreferrer' className="flex items-center duration-150 ease-in-out hover:scale-105 gap-x-2">Download <MdDownloadForOffline size={18} /></a>
           </ul>
         </div>
         

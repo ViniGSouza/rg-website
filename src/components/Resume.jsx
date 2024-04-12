@@ -42,17 +42,17 @@ export const Resume = () => {
               <div className="absolute w-48 mt-2 bg-white rounded-lg shadow-lg right-[42%]">
                 <ul className="w-[300px] py-2 font-bold bg-red-800 rounded drop-shadow-md">
                   <li>
-                    <a href="https://mega.nz/file/QhhU0IYI#3eNS5iEtUd8C5n31cOVQtCClQz4ohUb8-kvv4OL02K0" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
+                    <a href="https://mega.nz/file/lpoEQKoA#utZGdhbiUyFHjMRMu9KxN0fQeDjY8QvHkZYpNN21Ut4" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
                       MEGA
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.mediafire.com/file/g84zngwodpd9nis/Rogue_SEA_RGM.zip/file" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
+                    <a href="https://www.mediafire.com/file_premium/u9vky70el1jw85w/Rogue_SEA_20240410.rar/file" className="block px-4 py-2 text-white hover:bg-red-500" target='_blank' rel="noreferrer">
                       MEDIAFIRE
                     </a>
                   </li>
                   <li>
-                    <a href="https://drive.google.com/file/d/1gqxdJT8ZcWhtrsjk9XjuiiSFAU5qhHpJ/view?usp=sharing" target='_blank' rel="noreferrer" className="block px-4 py-2 text-white hover:bg-red-500">
+                    <a href="https://drive.google.com/file/d/1r3z9lqLIXXjCbT7YO3mlXye0XGjgx7Lf/view?usp=sharing" target='_blank' rel="noreferrer" className="block px-4 py-2 text-white hover:bg-red-500">
                       GOOGLE DRIVE
                     </a>
                   </li>
@@ -61,9 +61,9 @@ export const Resume = () => {
             )}
           </div>
 
-            <a href="https://www.mediafire.com/file/307w705ej9zbv5z/RogueMIR_SEA_20240119.apk/file" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800"><BsAndroid2 size={30} />DOWNLOAD ANDROID</a>
+            <a href="https://drive.google.com/file/d/1lt-Hft_DpMmJI1cMyJ-lH786rrmYNRTB/view?usp=sharing" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800"><BsAndroid2 size={30} />DOWNLOAD ANDROID</a>
 
-            <a href="https://ff.youwan520.com/XSC4" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800">
+            <a href="https://f.fenfa88.com/ROmX" target="_blank" className="flex items-center px-16 py-3 text-2xl font-bold duration-150 ease-in-out bg-red-600 rounded gap-x-6 hover:bg-red-800">
               <FaAppStoreIos size={30} />DOWNLOAD IOS</a>
           </div>
         </div>
